@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">FindSongs</h1>
+<% if user_signed_in? %>
+    <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+    <p>Pour mettre tes sons, tu dois d'abord te connecter</p>
+    <%= link_to 'Se connecter', new_user_session_path %>
+<% end %>
+
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+      <th>Thumbnail</th>
+      <th>User</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= link_to song.title, song %></td>
+        <td><%= song.link %></td>
+        <td><%= song.thumbnail %></td>
+        <td><%= song.user_id %></td>
+        <td>
+          <% if song.user == current_user %>
+            <%= link_to 'Edit', edit_song_path(song) %>
+            <%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> -->
+<% @songs.each do |song| %>
+<div class="card" style="width: 18rem;">
+  <img src="<%= song.thumbnail %>" class="card-img-top" alt>
+  <div class="card-body">
+    <h5 class="card-title"><%= song.link %></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <% if song.user == current_user %>
+            <%= link_to 'Edit', edit_song_path(song), class: 'btn btn-secondary' %>
+            <%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<br>
+
+<% if user_signed_in? %>
+<%= link_to 'New Song', new_song_path %>
+    <% else %>
+    <%= link_to 'New Song', new_user_session_path %>
+<% end %>
+

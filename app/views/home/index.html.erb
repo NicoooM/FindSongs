@@ -1,0 +1,10 @@
+<h1>Bienvenue sur FindSongs</h1>
+
+<p>
+    <% if user_signed_in? %>
+    <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %>
+    <% else %>
+    <p>Pour mettre tes sons, tu dois d'abord te connecter</p>
+    <%= link_to 'Se connecter', new_user_session_path %>
+    <% end %>
+</p>
