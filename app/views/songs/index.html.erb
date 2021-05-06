@@ -1,12 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="text-center">FindSongs</h1>
-<% if user_signed_in? %>
-    <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
-    <% else %>
-    <p>Pour mettre tes sons, tu dois d'abord te connecter</p>
-    <%= link_to 'Se connecter', new_user_session_path %>
-<% end %>
 
 <!-- <table>
   <thead>
@@ -37,12 +31,11 @@
   </tbody>
 </table> -->
 <% @songs.each do |song| %>
-<div class="card" style="width: 18rem;">
-  <img src="<%= song.thumbnail %>" class="card-img-top" alt>
+<div class="card w-50 m-auto mb-5">
+  <a href="<%= song.link %>" target="_blank"><img src="<%= song.thumbnail %>" class="card-img-top" alt></a>
   <div class="card-body">
-    <h5 class="card-title"><%= song.link %></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title"><%= song.title %></h5>
+    <a href="<%= song.link%>" class="btn btn-warning" target="_blank">Ecouter</a>
     <% if song.user == current_user %>
             <%= link_to 'Edit', edit_song_path(song), class: 'btn btn-secondary' %>
             <%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
@@ -53,8 +46,9 @@
 <br>
 
 <% if user_signed_in? %>
-<%= link_to 'New Song', new_song_path %>
+<%= link_to 'New Song', new_song_path, class: 'btn btn-primary' %>
     <% else %>
-    <%= link_to 'New Song', new_user_session_path %>
+    <%= link_to 'New Song', new_user_session_path, class: 'btn btn-primary' %>
+    <p>Tu dois être connecté pour pouvoir rajouter tes sons.</p>
 <% end %>
 

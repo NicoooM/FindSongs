@@ -12,7 +12,21 @@
   </head>
 
   <body>
-    <div class="container">
+    <nav class="navbar navbar-dark bg-dark px-5 mb-3">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand">Accueil
+        </a>
+        <form class="d-flex">
+          <% if user_signed_in? %>
+            <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'Se connecter', new_user_session_path, class: 'btn btn-outline-light me-5' %>
+            <%= link_to "S'inscrire", new_user_registration_path, class: 'btn btn-primary' %>
+          <% end %>
+        </form>
+      </div>
+    </nav>
+    <div class="container pb-5">
       <%= yield %>
     </div>
   </body>

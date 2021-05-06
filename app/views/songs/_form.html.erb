@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field my-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :link %>
-    <%= form.text_area :link %>
+  <div class="field my-3">
+    <%= form.label :link, class: 'form-label' %>
+    <%= form.text_area :link, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :thumbnail %>
-    <%= form.text_area :thumbnail %>
+  <div class="field my-3">
+    <%= form.label :thumbnail, class: 'form-label' %>
+    <%= form.text_area :thumbnail, class: 'form-control' %>
   </div> 
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions my-3">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
